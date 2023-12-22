@@ -9,67 +9,53 @@ The project uses a tech stack comprising of  Flask - a Python framework for the 
 
 ## CampusExplorer Web Application File Structure
 
-/CampusExplorer
-|-- /findschlapp
-|   |-- /backend
-|   |   |-- app.py
-|   |   |-- /templates
-|   |   |   |-- index.html
-|   |   |   |-- register.html
-|   |   |   |-- login.html
-|   |   |   |-- comments.html
-|   |   |-- /static
-|   |   |   |-- /css
-|   |   |   |   |-- styles.css
-|   |   |   |-- /js
-|   |   |   |   |-- main.js
-|   |   |-- /venv (virtual environment)
-|-- /frontend
-|   |-- /public
-|   |   |-- index.html
-|   |-- /src
-|   |   |-- /components
-|   |   |   |-- CommentForm.js
-|   |   |   |-- LoginForm.js
-|   |   |   |-- RegistrationForm.js
-|   |   |   |-- CommentList.js
-|   |   |-- App.js
-|   |   |-- index.js
-|-- .gitignore
-|-- requirements.txt
+![Project Strucure](https://github.com/SirDom247/CampusExplorer/blob/6879098c458019d04ed64ee5aa23055ef7584316/Project%20File%20Structure.png)
 
 # Backend Files:
-*app.py:*  Main Flask application file. Defines routes, interacts with the database, and serves as the backend server.
-*institutions_data.json:*  JSON file containing data about institutions that can be inserted into the MongoDB database.
-*requirements.txt:*  Lists the Python packages required for the Flask application (Flask, Flask-PyMongo, Flask-Bcrypt).
+**app.py:**  Main Flask application file. Defines routes, interacts with the database, and serves as the backend server.
+**institutions_data.json:**  JSON file containing data about institutions that can be inserted into the MongoDB database.
+**requirements.txt:**  Lists the Python packages required for the Flask application (Flask, Flask-PyMongo, Flask-Bcrypt).
 
 # Frontend Files:
-*App.js:*  Main React component that serves as the entry point for the frontend application.
-*index.js:* Renders the App component into the HTML root element.
-*components/:*  Directory containing React component files.
-*CommentForm.js:* Component for adding comments.
-*LoginForm.js:* Component for user login.
-*RegistrationForm.js:* Component for user registration.
-*CommentList.js:* Component for displaying a list of comments.
+**App.js:**  Main React component that serves as the entry point for the frontend application.
+
+**index.js:** Renders the App component into the HTML root element.
+
+**components/:**  Directory containing React component files.
+
+**CommentForm.js:** Component for adding comments.
+
+**LoginForm.js:** Component for user login.
+
+**RegistrationForm.js:** Component for user registration.
+
+**CommentList.js:** Component for displaying a list of comments.
 
 # Git and Environment Files:
-*.gitignore:* Specifies files and directories to be ignored by Git during version control.
-*.env:* Environment file (for sensitive information, not included in the provided structure).
+**.gitignore:** Specifies files and directories to be ignored by Git during version control.
+
+**.env:** Environment file (for sensitive information, not included in the provided structure).
 
 # Node.js and React Files:
-*node_modules/:* Directory containing Node.js modules (created when you run npm install).
-*public/:* Directory containing static assets like HTML and favicon.
-*src/:* Directory containing the source code for the React application.
-*App.css:* CSS file for styling the React components.
-*App.js:* Main React component.
-*index.js:* Renders the main React component into the HTML root element.
-*components/:* Directory containing React component files.
+**node_modules/:** Directory containing Node.js modules (created when you run npm install).
+
+**public/:** Directory containing static assets like HTML and favicon.
+
+**src/:** Directory containing the source code for the React application.
+
+**App.css:** CSS file for styling the React components.
+
+**App.js:** Main React component.
+
+**index.js:** Renders the main React component into the HTML root element.
+
+**components/:** Directory containing React component files.
 
 These files collectively form the structure of a full-stack web application with a Flask backend and a React frontend. The backend handles server-side logic, database interactions, and API routes, while the frontend provides a user interface with components for comments, login, registration, and comment listing
 
-Thank you for reading and feel free to contact me for inputs, partnership, deals, and projects through:
+Thank you for reading.
+Feel free to contact me for inputs, partnership, deals, and projects through:
 Email: dominicudosoro@gmail.com
 Mobile: +2348027000555.
 
-## CampusExplorer 
-**(C)**
+# CampusExplorer (c)2023
