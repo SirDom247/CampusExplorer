@@ -1,0 +1,37 @@
+<!-- templates/commentForm.html -->
+
+<div class="comment-form">
+    <h2>Add a Comment</h2>
+    <form id="commentForm">
+        <textarea id="commentText" placeholder="Write your comment here..."></textarea>
+        <button type="submit">Submit Comment</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    document.getElementById('commentForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Get the comment text from the textarea
+        const commentText = document.getElementById('commentText').value;
+
+        // Make an API request to submit the comment
+        axios.post('http://localhost:5000/api/comments', {
+            comment: commentText,
+            // Include any additional fields like user_id if needed
+        })
+        .then(response => {
+            console.log('Comment submitted successfully:', response.data.message);
+            // Optionally, update the UI to reflect the new comment
+            // For example, refresh the comments list or show a success message
+        })
+        .catch(error => {
+            console.error('Error submitting comment:', error.response.data.error);
+            // Optionally, handle errors and update the UI accordingly
+        });
+
+        // Clear the comment textarea after submission
+        document.getElementById('commentText').value = '';
+    });
+</script>
