@@ -1,9 +1,11 @@
 from flask import Flask, request, render_template, jsonify, redirect, url_for
+from flask_cors import CORS  # Add this import for CORS support
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
 import json
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 app.config['MONGO_URI'] = 'mongodb://localhost:27017/institutions_db'
 mongo = PyMongo(app)
 bcrypt = Bcrypt(app)
@@ -14,7 +16,7 @@ def index():
     return render_template('index.html')
 
 # retrieve data from json file
-file_path = 'institution_data.json'
+file_path = 'institutions_data.json'
 
 with open(file_path, 'r') as json_file:
     institutions_data = json.load(json_file)
@@ -34,7 +36,6 @@ def search_institutions():
         state = request.args.get('state')
         # Query MongoDB
         institutions = mongo.db.institutions.find({'state': state})
-
         # Process the query results
         result = [
             {'name': inst['name'], 'state': inst['state'], 'ownership': inst['ownership']}
@@ -66,6 +67,7 @@ def get_all_institutions():
 def register():
     if request.method == 'POST':
         data = request.form
+        user_id = data.get('user_id', 'guest_user_id')
         email = data.get('email')
         password = data.get('password')
         
@@ -83,6 +85,7 @@ def register():
 def login():
     if request.method == 'POST':
         data = request.form
+        user_id = data.get('user_id', 'guest_user_id')
         email = data.get('email')
         password = data.get('password')
 
@@ -96,6 +99,30 @@ def login():
 
     return render_template('login.html')
 
+# Route for handling comments
+@app.route('/api/comments', methods=['POST'])
+def add_comment():
+    try:
+        data = request.get_json()
+        comment = data.get('comment')
+
+        # logic to store the comment in your database or perform other actions
+        # Create a new document for the comment
+        comment_doc = {    
+            'likes': 0,  
+            'replies': [],
+            'text': comment,
+        }
+
+        # Insert the comment into the MongoDB collection
+        mongo.db.comments.insert_one(comment_doc)
+
+        # print the comment to the console
+        print('Received comment:', comment)
+
+        return jsonify({'message': 'Comment submitted successfully'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 # Comments page
 @app.route('/comments')
 def comments():
