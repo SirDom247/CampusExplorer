@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, jsonify, redirect, url_for
-from flask_cors import CORS  # Add this import for CORS support
+from flask_cors import CORS 
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
 import json
